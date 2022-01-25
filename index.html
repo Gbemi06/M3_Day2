@@ -7,14 +7,43 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>hello world</h1>
+    <div class="row">
+
+        </div>
+
+    </div>
+
     <script>
       window.onload = () => {
-        fetch("https://striveschool-api.herokuapp.com/books", { Method: "GET" })
+        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem", { Method: "GET"})
           .then((response) => response.json())
-          .then((loadData) => {
+          .then(loadData => {
             console.log(loadData);
-          });
+
+           let musicData = document.querySelector(".row")
+
+           for (let i = 0; i < loadData.data.length; i++){
+               const music = loadData.data[i]
+               console.log(music)
+
+               const theData = document.createElement("div")
+               theData.classList.add("col-3")
+               theData.innerHTML = 
+               `<div class="card">
+  <img src="${music.artist.picture_big}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h6 class="card-title">${music.title}</h6>
+    <p class="card-text">${music.artist.name}</p>
+    <p class="card-text">${music.album.title}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+`
+console.log(theData)
+            musicData.appendChild(theData)
+           }
+            
+        });
       };
     </script>
   </body>
