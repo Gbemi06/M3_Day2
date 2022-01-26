@@ -22,7 +22,7 @@
 
            let musicData = document.querySelector(".row")
 
-           for (let i = 0; i < loadData.data.length; i++){
+           for (let i = 0; i < loadData.length; i++){
                const music = loadData.data[i]
                console.log(music)
 
@@ -30,7 +30,7 @@
                theData.classList.add("col-3")
                theData.innerHTML = 
                `<div class="card">
-  <img src="${music.artist.picture_big}" class="card-img-top" alt="...">
+  <img src="${music.artist.picture}" class="card-img-top" alt="...">
   <div class="card-body">
     <h6 class="card-title">${music.title}</h6>
     <p class="card-text">${music.artist.name}</p>
